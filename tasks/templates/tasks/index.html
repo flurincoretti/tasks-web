@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+{% load markdown_filters %}
+
+<h1>Tasks</h1>
+
+{% if tasks %}
+    {% regroup tasks by status as status_groups %}
+    {% for group in status_groups %}
+        {% with first=group.list|first %}
+        <section class="task-section">
+            <h2>{{ first.get_status_display }}</h2>
+            <ul class="task-list">
+                {% for task in group.list %}
+                <li>
+                    <div class="task-description">
+                        {{ task.description }}
+                    </div>
+
+                    <div class="task-notes">
+                        {{ task.notes | markdown }}
+                    </div>
+
+                    <ul class="task-metadata">
+                        <li>{{ task.get_status_display }}</li>
+                        <li>{{ task.get_priority_display }}</li>
+                    </ul>
+
+                    <ul class="task-dates">
+                        <li>Created on {{ task.created_at|date:"Y-m-d \\a\\t H:i" }}</li>
+                        {% if task.due_at %}
+                        <li>Due on {{ task.due_at|date:"Y-m-d \\a\\t H:i" }} {% if task.is_overdue %}(Overdue){% endif %}</li>
+                        {% endif %}
+                        {% if task.completed_at %}
+                        <li>Completed on {{ task.completed_at|date:"Y-m-d \\a\\t H:i" }}</li>
+                        {% endif %}
+                    </ul>
+
+                    <div class="task-actions">
+                        <a href="{% url 'admin:tasks_task_change' task.id %}" class="edit-btn">Edit</a>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endwith %}
+    {% endfor %}
+{% else %}
+    <div>
+        <h2>No tasks found</h2>
+        <p>Create your first task using the admin panel.</p>
+    </div>
+{% endif %}
+
+{% endif %}
+
+{% endblock %}

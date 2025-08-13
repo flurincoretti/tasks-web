@@ -1,0 +1,26 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Tasks{% endblock %}</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            {% if user.is_authenticated %}
+            <a href="{% url 'admin:index' %}">Admin</a>
+            {% else %}
+            <a href="{% url 'admin:index' %}">Login</a>
+            {% endif %}
+        </header>
+        <main>
+            {% block content %}{% endblock content %}
+        </main>
+    </div>
+</body>
+
+</html>
