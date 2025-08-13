@@ -9,7 +9,7 @@ services:
       - SECRET_KEY=${SECRET_KEY:?set in .env}
       - ALLOWED_HOSTS=${DOMAIN}
       - CSRF_TRUSTED_ORIGINS=https://${DOMAIN}
-      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD:?set in .env}@database:5432/postgres
+      - DATABASE_URL=postgresql://tasks:${POSTGRES_PASSWORD:?set in .env}@database:5432/tasks
       - DJANGO_SETTINGS_MODULE=config.settings
       - SECURE_SSL_REDIRECT=${SECURE_SSL_REDIRECT:-True}
       - SECURE_BROWSER_XSS_FILTER=${SECURE_BROWSER_XSS_FILTER:-True}
