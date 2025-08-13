@@ -1,5 +1,5 @@
 services:
-  web:
+  tasks-web:
     build:
       context: .
       target: production
