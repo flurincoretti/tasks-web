@@ -1,8 +1,9 @@
 services:
-  tasks-web:
+  web:
     build:
       context: .
       target: production
+    container_name: tasks
     restart: unless-stopped
     environment:
       - DEBUG=${DEBUG:-0}
@@ -19,13 +20,16 @@ services:
       - SECURE_HSTS_INCLUDE_SUBDOMAINS=${SECURE_HSTS_INCLUDE_SUBDOMAINS:-True}
       - SECURE_HSTS_PRELOAD=${SECURE_HSTS_PRELOAD:-True}
     volumes:
-      - static_files:/app/staticfiles
-    networks: [web]
+      - staticfiles:/app/staticfiles
+    networks:
+      web:
+        aliases:
+          - tasks
     ports:
       - "8000:8000"
 
 volumes:
-  static_files:
+  staticfiles:
 
 networks:
   web:
