@@ -104,19 +104,19 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files
+# Static and media files
 
 STATIC_URL = env.str("STATIC_URL", default="/static/")
-STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
-
-
-# Media files
-
 MEDIA_URL = env.str("MEDIA_URL", default="/media/")
-MEDIA_ROOT = BASE_DIR / "media"
+
+if DEBUG:
+    STATIC_ROOT = BASE_DIR / "staticfiles"
+    MEDIA_ROOT = BASE_DIR / "media"
+    STATICFILES_DIRS = [BASE_DIR / "static"]
+else:
+    STATIC_ROOT = Path("/app/static")
+    MEDIA_ROOT = Path("/app/media")
+    STATICFILES_DIRS = []
 
 
 # Security settings
