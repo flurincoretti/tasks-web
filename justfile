@@ -37,74 +37,74 @@ dev-init:
     just dev-createsuperuser
 
 dev-build:
-    docker-compose build
+    docker compose build
 
 dev-up:
-    docker-compose up -d
+    docker compose up -d
 
 dev-down:
-    docker-compose down
+    docker compose down
 
 dev-logs:
-    docker-compose logs -f
+    docker compose logs -f
 
 dev-shell:
-    docker-compose exec web python manage.py shell
+    docker compose exec web python manage.py shell
 
 dev-migrate:
-    docker-compose exec web python manage.py migrate
+    docker compose exec web python manage.py migrate
 
 dev-makemigrations:
-    docker-compose exec web python manage.py makemigrations
+    docker compose exec web python manage.py makemigrations
 
 dev-createsuperuser:
-    docker-compose exec web python manage.py createsuperuser --noinput
+    docker compose exec web python manage.py createsuperuser --noinput
 
 dev-collectstatic:
-    docker-compose exec web python manage.py collectstatic --noinput
+    docker compose exec web python manage.py collectstatic --noinput
 
 dev-test:
-    docker-compose exec web python manage.py test
+    docker compose exec web python manage.py test
 
 dev-restart:
-    docker-compose restart
+    docker compose restart
 
 [confirm]
 dev-clean:
-    docker-compose down -v
+    docker compose down -v
     docker system prune -f
 
 dev-psql:
-    docker-compose exec db psql -U blog
+    docker compose exec db psql -U blog
 
 dev-status:
-    docker-compose ps
+    docker compose ps
 
 # Docker production commands:
 
 prod-build:
-    docker-compose -f docker-compose.prod.yml build --no-cache
+    docker compose -f docker compose.prod.yml build --no-cache
 
 prod-up:
-    docker-compose -f docker-compose.prod.yml up -d
+    docker compose -f docker compose.prod.yml up -d
 
 prod-down:
-    docker-compose -f docker-compose.prod.yml down
+    docker compose -f docker compose.prod.yml down
 
 prod-logs:
-    docker-compose -f docker-compose.prod.yml logs -f
+    docker compose -f docker compose.prod.yml logs -f
 
 prod-shell:
-    docker-compose -f docker-compose.prod.yml exec web python manage.py shell
+    docker compose -f docker compose.prod.yml exec web python manage.py shell
 
 prod-migrate:
-    docker-compose -f docker-compose.prod.yml exec web python manage.py migrate
+    docker compose -f docker compose.prod.yml exec web python manage.py migrate
 
 prod-restart:
-    docker-compose -f docker-compose.prod.yml restart
+    docker compose -f docker compose.prod.yml restart
 
 prod-psql:
-    docker-compose -f docker-compose.prod.yml exec db psql -U blog
+    docker compose -f docker compose.prod.yml exec db psql -U blog
 
 prod-status:
-    docker-compose -f docker-compose.prod.yml ps
+    docker compose -f docker compose.prod.yml ps
