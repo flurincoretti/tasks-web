@@ -4,5 +4,6 @@ build/
 dist/
 wheels/
 *.egg-info
+.env
 .env.dev
 .venv
