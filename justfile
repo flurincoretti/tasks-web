@@ -100,6 +100,9 @@ prod-shell:
 prod-migrate:
     docker compose -f docker-compose.prod.yml exec web python manage.py migrate
 
+prod-collectstatic:
+    docker compose -f docker-compose.prod.yml exec web python manage.py collectstatic --noinput
+
 prod-restart:
     docker compose -f docker-compose.prod.yml restart
 

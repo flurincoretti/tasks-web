@@ -2,6 +2,8 @@
 FROM ghcr.io/astral-sh/uv:python3.13-alpine AS base
 
 # Set environment variables.
+ENV DEBUG=0
+ENV DJANGO_SETTINGS_MODULE=config.settings
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 ENV PIP_NO_CACHE_DIR=1
@@ -52,14 +54,10 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --locked --no-dev
 
 # Create directories for static and media files.
-RUN mkdir -p /app/static /app/media && \
-    chown -R django:django /app
+RUN mkdir -p /app/static /app/media && chown -R django:django /app
 
 # Place executables in the environment at the front of the path.
 ENV PATH="/app/.venv/bin:$PATH"
-
-# Collect static files.
-RUN python manage.py collectstatic --noinput
 
 # Switch to non-root user.
 USER django

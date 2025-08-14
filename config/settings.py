@@ -108,15 +108,14 @@ USE_TZ = True
 
 STATIC_URL = env.str("STATIC_URL", default="/static/")
 MEDIA_URL = env.str("MEDIA_URL", default="/media/")
+STATICFILES_DIRS = [BASE_DIR / "assets"]
 
 if DEBUG:
     STATIC_ROOT = BASE_DIR / "staticfiles"
     MEDIA_ROOT = BASE_DIR / "media"
-    STATICFILES_DIRS = [BASE_DIR / "static"]
 else:
     STATIC_ROOT = Path("/app/static")
     MEDIA_ROOT = Path("/app/media")
-    STATICFILES_DIRS = []
 
 
 # Security settings
