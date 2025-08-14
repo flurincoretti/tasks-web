@@ -14,7 +14,7 @@ services:
       - DJANGO_SETTINGS_MODULE=config.settings
       - SECURE_SSL_REDIRECT=${SECURE_SSL_REDIRECT:-True}
     volumes:
-      - staticfiles:/app/staticfiles
+      - tasks_data:/app/staticfiles
     networks:
       web:
         aliases:
@@ -23,7 +23,8 @@ services:
       - "8000:8000"
 
 volumes:
-  staticfiles:
+  tasks_data:
+    external: true
 
 networks:
   web:
