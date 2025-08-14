@@ -19,6 +19,7 @@ services:
       - SECURE_HSTS_SECONDS=${SECURE_HSTS_SECONDS:-31536000}
       - SECURE_HSTS_INCLUDE_SUBDOMAINS=${SECURE_HSTS_INCLUDE_SUBDOMAINS:-True}
       - SECURE_HSTS_PRELOAD=${SECURE_HSTS_PRELOAD:-True}
+      - SECURE_PROXY_SSL_HEADER=HTTP_X_FORWARDED_PROTO,https
     volumes:
       - staticfiles:/app/staticfiles
     networks:
