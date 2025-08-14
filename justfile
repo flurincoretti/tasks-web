@@ -100,6 +100,9 @@ prod-shell:
 prod-migrate:
     docker compose -f docker-compose.prod.yml exec web python manage.py migrate
 
+prod-createsuperuser:
+    docker compose -f docker-compose.prod.yml exec web python manage.py createsuperuser
+
 prod-collectstatic:
     docker compose -f docker-compose.prod.yml exec web python manage.py collectstatic --noinput
 
