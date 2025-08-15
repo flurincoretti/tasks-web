@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 from projects.models import Project
 from utils.models import BaseModel
@@ -13,7 +14,7 @@ class Timeblock(BaseModel):
         blank=True,
         related_name="timeblocks",
     )
-    started_at = models.DateTimeField(blank=False)
+    started_at = models.DateTimeField(default=timezone.now, blank=False)
     ended_at = models.DateTimeField(null=True, blank=True)
 
     def __str__(self) -> str:
