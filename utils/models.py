@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
-from utils.fields import ULIDField
+from utils.fields import ULIDField, generate_ulid
 
 
 class BaseModel(models.Model):
@@ -15,7 +15,7 @@ class BaseModel(models.Model):
     def save(self, *args, **kwargs):
         update_timestamp = kwargs.pop("update_timestamp", True)
         if not self.id:
-            self.id = ULIDField.generate_ulid()
+            self.id = generate_ulid()
         if not self.created_at:
             self.created_at = timezone.now()
         if self._state.adding:
