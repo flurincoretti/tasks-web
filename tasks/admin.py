@@ -9,8 +9,7 @@ class TaskAdmin(admin.ModelAdmin):
     list_filter = ("project", "status", "priority")
     readonly_fields = ("id", "created_at", "updated_at", "completed_at")
     list_display = (
-        "id",
-        "description",
+        "short_description",
         "project",
         "status",
         "priority",
@@ -45,3 +44,10 @@ class TaskAdmin(admin.ModelAdmin):
             },
         ),
     )
+
+    def short_description(self, obj):
+        if len(obj.description) > 20:
+            return f"{obj.description[:20]}..."
+        return obj.description
+
+    short_description.short_description = "Description"

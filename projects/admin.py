@@ -7,8 +7,8 @@ from .models import Project
 class ProjectAdmin(admin.ModelAdmin):
     search_fields = ["title"]
     list_display = (
-        "id",
         "title",
+        "id",
     )
     fieldsets = (
         (
