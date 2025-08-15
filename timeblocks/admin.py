@@ -20,7 +20,7 @@ class TimeblockAdmin(admin.ModelAdmin):
                 "fields": (
                     "id",
                     "project",
-                    "notes",
+                    "log",
                 )
             },
         ),

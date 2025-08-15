@@ -5,7 +5,7 @@ from utils.models import BaseModel
 
 
 class Timeblock(BaseModel):
-    notes = models.TextField(blank=True)
+    log = models.TextField(blank=True)
     project = models.ForeignKey(
         Project,
         on_delete=models.SET_NULL,
