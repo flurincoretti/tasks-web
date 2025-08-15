@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "tasks",
     "projects",
+    "timeblocks",
 ]
 
 MIDDLEWARE = [
@@ -53,6 +54,7 @@ TEMPLATES = [
         "DIRS": [
             BASE_DIR / "config" / "templates",
             BASE_DIR / "tasks" / "templates",
+            BASE_DIR / "timeblocks" / "templates",
         ],
         "APP_DIRS": True,
         "OPTIONS": {
