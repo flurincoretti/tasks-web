@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "watch": "npx @tailwindcss/cli -i ./static/css/main.css -o ./assets/css/main.css --watch",
+    "build": "npx @tailwindcss/cli -i ./static/css/main.css -o ./assets/css/main.css",
+    "format": "npx prettier --write \"**/*.{css,js}\""
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.12",
+    "tailwindcss": "^4.1.12"
+  }
+}

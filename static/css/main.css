@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+    --breakpoint-*: initial;
+    --breakpoint-2xs: 384px;
+    --breakpoint-xs: 512px;
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1536px;
+
+    --font-sans: Inter, ui-sans-serif;
+    --font-serif: ui-serif;
+    --font-mono: ui-monospace;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../fonts/InterDisplay-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../fonts/InterDisplay-Italic.woff2") format("woff2");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../fonts/InterDisplay-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../fonts/InterDisplay-BoldItalic.woff2") format("woff2");
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    @apply font-sans;
+    @apply text-sm;
+    @apply text-neutral-800 dark:text-neutral-100;
+    @apply bg-white dark:bg-neutral-800;
+    font-feature-settings:
+        "liga" 1,
+        "calt" 1;
+    @apply leading-normal;
+}
+
+.wrapper {
+    @apply px-4;
+    @apply py-4;
+}
+
+h1 {
+    @apply text-xl;
+    @apply pt-4;
+}
+
+h2 {
+    @apply text-lg;
+    @apply py-4;
+}
+
+a {
+    @apply text-blue-500;
+}
+a:hover {
+    @apply text-blue-600;
+}
+
+ul {
+    @apply list-disc;
+    @apply ml-6;
+}
+
+li {
+    @apply leading-relaxed;
+}
+
+.task_list {
+    @apply pb-4;
+}

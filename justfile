@@ -6,19 +6,17 @@ install:
 
 update:
     uv lock --upgrade
+    npx npm-check-updates -u
+    npm install
 
 generate-secret:
     @uv run python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
 
-lint:
-    uv run ruff check --extend-select I
-
 format:
-    uv run ruff format
-
-fix:
     uv run ruff check --extend-select I --fix
     uv run ruff format
+    uv run djlint . --extension=html --reformat
+    npm run format
 
 clean:
     rm -rf .ruff_cache
